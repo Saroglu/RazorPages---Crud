@@ -1,0 +1,42 @@
+﻿@page "{id:int}"
+@model RazorPagesSample.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div asp-validation-summary="All"></div>
+
+<form method="post">
+    <input asp-for="Customer.Id" type="hidden" />
+    <div>
+        <label asp-for="Customer.Name"></label>
+        <input asp-for="Customer.Name" />
+        <span asp-validation-for="Customer.Name"></span>
+
+    </div>
+    <input type="submit" />
+</form>
+
+@*Client Validation*@
+
+@section scripts{
+
+    @*Yöntem 1*@
+
+    @*<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
+
+    @*Yöntem 2*@
+
+    @*@{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }*@
+
+
+
+
+    @*Yöntem 3*@
+
+    @Html.PartialAsync("_ValidationScriptsPartial").Result
+
+}
